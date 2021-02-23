@@ -1,107 +1,103 @@
 {
-  "componentPath": "./src/wwElement.vue",
-  "editor": {
-    "label": {
-      "en": "Rich text",
-      "fr": "Rich texte"
-    },
-    "styleOptions": {
-      "fontSize": {
-        "type": "Length",
+    "componentPath": "./src/wwElement.vue",
+    "editor": {
         "label": {
-          "en": "Size",
-          "fr": "Taille"
+            "en": "Rich text",
+            "fr": "Rich texte"
         },
-        "options": {
-          "unitChoices": [
-            { "value": "px", "label": "px", "min": 1, "max": 100 }
-          ]
-        }
-      },
-      "fontFamily": {
-        "type": "FontFamily",
-        "label": {
-          "en": "Font family",
-          "fr": "Font"
-        }
-      },
-      "textAlign": {
-        "type": "TextRadioGroup",
-        "options": {
-          "choices": [
-            {
-              "value": "left",
-              "default": true,
-              "title": { "en": "Left", "fr": "Gauche" },
-              "icon": "text-align-left"
+        "styleOptions": {
+            "fontSize": {
+                "type": "Length",
+                "label": {
+                    "en": "Size",
+                    "fr": "Taille"
+                },
+                "options": {
+                    "unitChoices": [{ "value": "px", "label": "px", "min": 1, "max": 100 }]
+                }
             },
-            {
-              "value": "center",
-              "title": { "en": "Center", "fr": "Milieu" },
-              "icon": "text-align-center"
+            "fontFamily": {
+                "type": "FontFamily",
+                "label": {
+                    "en": "Font family",
+                    "fr": "Font"
+                }
             },
-            {
-              "value": "right",
-              "title": { "en": "Right", "fr": "Droite" },
-              "icon": "text-align-right"
+            "textAlign": {
+                "type": "TextRadioGroup",
+                "options": {
+                    "choices": [
+                        {
+                            "value": "left",
+                            "default": true,
+                            "title": { "en": "Left", "fr": "Gauche" },
+                            "icon": "text-align-left"
+                        },
+                        {
+                            "value": "center",
+                            "title": { "en": "Center", "fr": "Milieu" },
+                            "icon": "text-align-center"
+                        },
+                        {
+                            "value": "right",
+                            "title": { "en": "Right", "fr": "Droite" },
+                            "icon": "text-align-right"
+                        },
+                        {
+                            "value": "justify",
+                            "title": { "en": "Justify", "fr": "Justifié" },
+                            "icon": "text-align-justify"
+                        }
+                    ]
+                },
+                "label": {
+                    "en": "Alignement",
+                    "fr": "Alignement"
+                }
             },
-            {
-              "value": "justify",
-              "title": { "en": "Justify", "fr": "Justifié" },
-              "icon": "text-align-justify"
+            "color": {
+                "type": "Color",
+                "label": {
+                    "en": "Text color",
+                    "fr": "Couleur du texte"
+                },
+                "bindable": true,
+                "options": {
+                    "nullable": true
+                }
+            },
+            "lineHeight": {
+                "label": {
+                    "en": "Line height",
+                    "fr": "Hauteur de ligne"
+                },
+                "type": "Length",
+                "options": {
+                    "unitChoices": [{ "value": "px", "label": "px", "min": 0, "max": 100 }]
+                }
             }
-          ]
         },
-        "label": {
-          "en": "Alignement",
-          "fr": "Alignement"
-        }
-      },
-      "color": {
-        "type": "Color",
-        "label": {
-          "en": "Text color",
-          "fr": "Couleur du texte"
-        },
-        "bindable": true,
-        "options": {
-          "nullable": true
-        }
-      },
-      "lineHeight": {
-        "label": {
-          "en": "Line height",
-          "fr": "Hauteur de ligne"
-        },
-        "type": "Length",
-        "options": {
-          "unitChoices": [
-            { "value": "px", "label": "px", "min": 0, "max": 100 }
-          ]
-        }
-      }
-    },
-    "settingsOptions": [
-      {
-        "label": {
-          "en": "Specific",
-          "fr": "Spécific"
-        },
-        "fields": {
-          "text": {
-            "type": "Textarea",
-            "label": {
-              "en": "Content",
-              "fr": "Contenu"
-            },
-            "bindable": true,
-            "multiLang": true,
-            "options": {
-              "row": 20
+        "settingsOptions": [
+            {
+                "label": {
+                    "en": "Specific",
+                    "fr": "Spécific"
+                },
+                "fields": {
+                    "text": {
+                        "type": "Textarea",
+                        "label": {
+                            "en": "Content",
+                            "fr": "Contenu"
+                        },
+                        "bindable": true,
+                        "multiLang": true,
+                        "options": {
+                            "row": 20
+                        }
+                    }
+                }
             }
-          }
-        }
-      }
-    ]
-  }
+        ]
+    }
 }
