@@ -1,9 +1,11 @@
 <template>
     <div class="ww-rich-text-temp">
         <div v-if="html.length" class="ww-rich-text-temp" v-html="html" :style="style"></div>
+        <!-- wwEditor:start -->
         <div v-else class="ww-rich-text-temp__placeholder caption-m">
             Enter markdown or html in the sidebar to preview the result.
         </div>
+        <!-- wwEditor:end -->
     </div>
 </template>
 
@@ -14,9 +16,9 @@ export default {
     name: '__COMPONENT_NAME__',
     props: {
         content: Object,
-        /* wwManager: start */
+        /* wwEditor:start */
         wwEditorState: Object,
-        /* wwManager: end */
+        /* wwEditor:end */
     },
     wwDefaultContent: {
         text: {
@@ -50,14 +52,20 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .ww-rich-text-temp {
-    position: relative;
+    /* wwEditor:start */
     min-height: 50px;
     &__placeholder {
         background-color: var(--ww-color-dark-300);
         padding: var(--ww-spacing-05);
     }
+    /* wwEditor:end */
+}
+</style>
+
+<style lang="scss">
+.ww-rich-text-temp {
     a {
         display: initial;
         color: rgb(0, 125, 255);
