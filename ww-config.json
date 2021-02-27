@@ -66,6 +66,17 @@
                     "nullable": true
                 }
             },
+            "linksColor": {
+                "type": "Color",
+                "label": {
+                    "en": "Links color",
+                    "fr": "Couleur des liens"
+                },
+                "bindable": true,
+                "options": {
+                    "nullable": true
+                }
+            },
             "lineHeight": {
                 "label": {
                     "en": "Line height",

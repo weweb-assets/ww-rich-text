@@ -29,6 +29,7 @@ export default {
         textAlign: wwLib.responsive(''),
         color: wwLib.responsive(''),
         lineHeight: wwLib.responsive(''),
+        linksColor: 'rgb(0, 125, 255)',
     },
     data() {
         return {
@@ -46,6 +47,7 @@ export default {
                 textAlign: this.content.textAlign,
                 color: this.content.color,
                 lineHeight: this.content.lineHeight,
+                '--links-color': this.content.linksColor,
             };
         },
     },
@@ -66,9 +68,11 @@ export default {
 
 <style lang="scss">
 .ww-rich-text-temp {
+    --links-color: rgb(0, 125, 255);
+
     a {
         display: initial;
-        color: rgb(0, 125, 255);
+        color: var(--links-color);
         text-decoration: underline;
     }
     img,
