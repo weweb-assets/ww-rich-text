@@ -518,6 +518,33 @@ const A = {
     },
 };
 
+const BLOCKQUOTE = {
+    color: {
+        type: 'Color',
+        label: {
+            en: 'Text color',
+            fr: 'Couleur du texte',
+        },
+        bindable: true,
+        options: {
+            nullable: true,
+        },
+        path: 'blockquote.color',
+    },
+    borderColor: {
+        type: 'Color',
+        label: {
+            en: 'Blockquote color',
+            fr: 'Couleur de la bordure',
+        },
+        bindable: true,
+        options: {
+            nullable: true,
+        },
+        path: 'blockquote.borderColor',
+    },
+};
+
 export const getSettingsConfigurations = content => {
     switch (content.selectedTag) {
         case 'h1':
@@ -536,6 +563,8 @@ export const getSettingsConfigurations = content => {
             return { styleOptions: { ...P } };
         case 'a':
             return { styleOptions: { ...A } };
+        case 'blockquote':
+            return { styleOptions: { ...BLOCKQUOTE } };
 
         default:
             return { styleOptions: { ...P } };
