@@ -88,10 +88,14 @@ export default {
             color: wwLib.responsive(''),
             isUnderline: true,
         },
+        blockquote: {
+            color: wwLib.responsive('rgb(153, 153, 153)'),
+            borderColor: wwLib.responsive('rgb(223, 226, 229)'),
+        },
     },
     data() {
         return {
-            converter: new showdown.Converter(),
+            converter: new showdown.Converter({ tables: true, openLinksInNewWindow: true, emoji: true }),
         };
     },
     /* wwEditor:start */
@@ -162,6 +166,9 @@ export default {
                 '--a-color': this.content.a.color,
                 '--a-lineHeight': this.content.a.lineHeight,
                 '--a-underline': this.content.a.isUnderline ? 'underline' : 'none',
+                // blockquote
+                '--blockquote-color': this.content.blockquote.color,
+                '--blockquote-borderColor': this.content.blockquote.borderColor,
             };
         },
     },
@@ -255,12 +262,36 @@ export default {
     color: var(--p-color);
     line-height: var(--p-lineHeight);
 
+    table {
+        width: 100%;
+        display: table;
+        border-collapse: collapse;
+        box-sizing: border-box;
+        text-indent: initial;
+        border-spacing: 2px;
+        border-color: grey;
+
+        tr {
+            border-top: 1px solid #dfe2e5;
+        }
+        td,
+        th {
+            border: 1px solid #dfe2e5;
+            padding: 0.6em 1em;
+        }
+    }
+    blockquote {
+        color: var(--blockquote-color);
+        border-left: 0.2rem solid var(--blockquote-borderColor);
+        margin: 1rem 0;
+        padding: 0.25rem 0 0.25rem 1rem;
+    }
     img,
     video,
     iframe {
         max-width: 100%;
         width: 100%;
-        margin: 0 auto;
+        margin: 24px auto;
     }
 }
 </style>
