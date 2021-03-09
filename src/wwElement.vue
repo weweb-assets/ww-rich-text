@@ -25,6 +25,8 @@ export default {
             en: '',
         },
         fontSize: wwLib.responsive('16px'),
+        titleFont: wwLib.responsive(''),
+        titleWeight: wwLib.responsive(''),
         fontFamily: wwLib.responsive(''),
         textAlign: wwLib.responsive(''),
         color: wwLib.responsive(''),
@@ -48,6 +50,8 @@ export default {
                 color: this.content.color,
                 lineHeight: this.content.lineHeight,
                 '--links-color': this.content.linksColor,
+                '--title-font-family': this.content.titleFont,
+                '--title-font-weight': this.content.titleWeight,
             };
         },
     },
@@ -69,7 +73,18 @@ export default {
 <style lang="scss">
 .ww-rich-text-temp {
     --links-color: rgb(0, 125, 255);
+    --title-font-family: 'Roboto';
+    --title-font-weight: 400;
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--title-font-family);
+        font-weight: var(--title-font-weight);
+    }
     a {
         display: initial;
         color: var(--links-color);
