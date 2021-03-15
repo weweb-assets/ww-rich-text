@@ -2,7 +2,7 @@
     <div class="ww-rich-text-temp">
         <div v-if="html.length" class="ww-rich-text-temp" v-html="html" :style="style"></div>
         <!-- wwEditor:start -->
-        <div v-else class="ww-rich-text-temp__placeholder caption-m">
+        <div v-else-if="isEditing" class="ww-rich-text-temp__placeholder caption-m">
             Enter markdown or html in the sidebar to preview the result.
         </div>
         <!-- wwEditor:end -->
@@ -92,10 +92,19 @@ export default {
             color: wwLib.responsive('rgb(153, 153, 153)'),
             borderColor: wwLib.responsive('rgb(223, 226, 229)'),
         },
+        img: {
+            width: wwLib.responsive('100%'),
+        },
+        iframe: {
+            width: wwLib.responsive('100%'),
+        },
+        zoomEffect: false,
     },
     data() {
         return {
             converter: new showdown.Converter({ tables: true, openLinksInNewWindow: true, emoji: true }),
+            figures: [],
+            isZoomed: false,
         };
     },
     /* wwEditor:start */
@@ -103,7 +112,20 @@ export default {
         return getSettingsConfigurations(content);
     },
     /* wwEditor:end */
+    watch: {
+        'content.text'() {
+            this.removeListener();
+            this.init();
+        },
+    },
     computed: {
+        isEditing() {
+            /* wwEditor:start */
+            return this.wwEditorState.editMode === wwLib.wwSectionHelper.EDIT_MODES.CONTENT;
+            /* wwEditor:end */
+            // eslint-disable-next-line no-unreachable
+            return false;
+        },
         html() {
             return this.converter.makeHtml(wwLib.wwLang.getText(this.content.text));
         },
@@ -169,8 +191,78 @@ export default {
                 // blockquote
                 '--blockquote-color': this.content.blockquote.color,
                 '--blockquote-borderColor': this.content.blockquote.borderColor,
+                // images
+                '--img-width': this.content.img.width,
+                '--img-cursor': this.imgCursor,
+                // iframe
+                '--iframe-width': this.content.iframe.width,
             };
         },
+        imgCursor() {
+            if (this.isEditing) return 'auto';
+
+            if (this.content.zoomEffect) {
+                return this.isZoomed ? 'zoom-out' : 'zoom-in';
+            }
+
+            return 'auto';
+        },
+    },
+    methods: {
+        init() {
+            if (!this.content.zoomEffect) return;
+
+            this.figures = this.$el.querySelectorAll('figure');
+
+            for (let figure of this.figures) {
+                figure.addEventListener('click', () => this.zoom(figure));
+            }
+
+            document.addEventListener('scroll', () => this.reset());
+        },
+        zoom(figure) {
+            if (!this.content.zoomEffect) return;
+
+            if (this.isZoomed) {
+                this.reset();
+                return;
+            }
+
+            figure.style.position = 'fixed';
+            figure.style.width = '100vw';
+            figure.style.height = '100vh';
+            figure.style.left = '50%';
+            figure.style.top = '50%';
+            figure.style.transform = 'translateX(-50%) translateY(-50%)';
+            figure.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            figure.firstChild.style.width = '100%';
+
+            this.isZoomed = true;
+        },
+        reset() {
+            for (let figure of this.figures) {
+                figure.style.position = 'initial';
+                figure.style.width = 'initial';
+                figure.style.height = 'initial';
+                figure.style.transform = 'translateX(0%) translateY(0%)';
+                figure.style.backgroundColor = 'transparent';
+                figure.firstChild.style.width = this.content.img.width;
+            }
+
+            this.isZoomed = false;
+        },
+        removeListener() {
+            for (let figure of this.figures) {
+                figure.removeEventListener('click', () => this.zoom(figure));
+            }
+            document.removeEventListener('scroll', () => this.reset());
+        },
+    },
+    mounted() {
+        this.init();
+    },
+    beforeDestroy() {
+        this.removeListener();
     },
 };
 </script>
@@ -286,11 +378,27 @@ export default {
         margin: 1rem 0;
         padding: 0.25rem 0 0.25rem 1rem;
     }
-    img,
-    video,
-    iframe {
-        max-width: 100%;
+    figure {
+        z-index: 20;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         width: 100%;
+        margin: 0;
+        text-align: center;
+        backdrop-filter: blur(12px);
+
+        &:hover {
+            cursor: var(--img-cursor);
+        }
+    }
+    img {
+        transition: 0.2s;
+        width: var(--img-width);
+        margin: 24px auto;
+    }
+    iframe {
+        width: var(--video-width);
         margin: 24px auto;
     }
 }

@@ -545,6 +545,48 @@ const BLOCKQUOTE = {
     },
 };
 
+const IMG = {
+    width: {
+        type: 'Length',
+        label: {
+            en: 'Size',
+            fr: 'Taille',
+        },
+        options: {
+            unitChoices: [
+                { value: '%', label: '%', min: 1, max: 100 },
+                { value: 'px', label: 'px', min: 1 },
+            ],
+        },
+        path: 'img.width',
+    },
+    zoomEffect: {
+        type: 'OnOff',
+        label: {
+            en: 'Zoom on click',
+            fr: 'Zoom au click',
+        },
+        path: 'zoomEffect',
+    },
+};
+
+const IFRAME = {
+    width: {
+        type: 'Length',
+        label: {
+            en: 'Size',
+            fr: 'Taille',
+        },
+        options: {
+            unitChoices: [
+                { value: '%', label: '%', min: 1, max: 100 },
+                { value: 'px', label: 'px', min: 1 },
+            ],
+        },
+        path: 'iframe.width',
+    },
+};
+
 export const getSettingsConfigurations = content => {
     switch (content.selectedTag) {
         case 'h1':
@@ -565,6 +607,10 @@ export const getSettingsConfigurations = content => {
             return { styleOptions: { ...A } };
         case 'blockquote':
             return { styleOptions: { ...BLOCKQUOTE } };
+        case 'img':
+            return { styleOptions: { ...IMG } };
+        case 'iframe':
+            return { styleOptions: { ...IFRAME } };
 
         default:
             return { styleOptions: { ...P } };
