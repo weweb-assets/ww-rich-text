@@ -117,6 +117,16 @@ export default {
             this.removeListener();
             this.init();
         },
+        'content.zoomEffect'() {
+            this.$emit('update', { img: { width: wwLib.responsive('90%') } });
+
+            if (this.content.zoomEffect) {
+                this.removeListener();
+                this.init();
+            } else {
+                this.removeListener();
+            }
+        },
     },
     computed: {
         isEditing() {
@@ -130,6 +140,7 @@ export default {
             return this.converter.makeHtml(wwLib.wwLang.getText(this.content.text));
         },
         style() {
+            console.log(this.content.img.width);
             return {
                 // H1
                 '--h1-fontSize': this.content.h1.fontSize,
@@ -218,34 +229,23 @@ export default {
                 figure.addEventListener('click', () => this.zoom(figure));
             }
 
-            document.addEventListener('scroll', () => this.reset());
+            document.addEventListener('scroll', this.reset);
         },
         zoom(figure) {
             if (!this.content.zoomEffect) return;
-
             if (this.isZoomed) {
                 this.reset();
                 return;
             }
 
-            figure.style.position = 'fixed';
-            figure.style.width = '100vw';
-            figure.style.height = '100vh';
-            figure.style.left = '50%';
-            figure.style.top = '50%';
-            figure.style.transform = 'translateX(-50%) translateY(-50%)';
-            figure.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            figure.classList.add('zoom');
             figure.firstChild.style.width = '100%';
 
             this.isZoomed = true;
         },
         reset() {
             for (let figure of this.figures) {
-                figure.style.position = 'initial';
-                figure.style.width = 'initial';
-                figure.style.height = 'initial';
-                figure.style.transform = 'translateX(0%) translateY(0%)';
-                figure.style.backgroundColor = 'transparent';
+                figure.classList.remove('zoom');
                 figure.firstChild.style.width = this.content.img.width;
             }
 
@@ -259,7 +259,9 @@ export default {
         },
     },
     mounted() {
-        this.init();
+        if (this.content.zoomEffect) {
+            this.init();
+        }
     },
     beforeDestroy() {
         this.removeListener();
@@ -390,6 +392,17 @@ export default {
 
         &:hover {
             cursor: var(--img-cursor);
+        }
+
+        &.zoom {
+            position: fixed;
+            z-index: 100;
+            width: 100vw;
+            height: 100vh;
+            left: 50%;
+            top: 50%;
+            background-color: rgba($color: #000000, $alpha: 0.6);
+            transform: translate3d(-50%, -50%, 50px);
         }
     }
     img {

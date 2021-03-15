@@ -570,6 +570,31 @@ const IMG = {
     },
 };
 
+const IMG_ZOOM_EFFECT = {
+    width: {
+        type: 'Length',
+        label: {
+            en: 'Size',
+            fr: 'Taille',
+        },
+        options: {
+            unitChoices: [
+                { value: '%', label: '%', min: 1, max: 90 },
+                { value: 'px', label: 'px', min: 1 },
+            ],
+        },
+        path: 'img.width',
+    },
+    zoomEffect: {
+        type: 'OnOff',
+        label: {
+            en: 'Zoom on click',
+            fr: 'Zoom au click',
+        },
+        path: 'zoomEffect',
+    },
+};
+
 const IFRAME = {
     width: {
         type: 'Length',
@@ -608,7 +633,7 @@ export const getSettingsConfigurations = content => {
         case 'blockquote':
             return { styleOptions: { ...BLOCKQUOTE } };
         case 'img':
-            return { styleOptions: { ...IMG } };
+            return content.zoomEffect ? { styleOptions: { ...IMG_ZOOM_EFFECT } } : { styleOptions: { ...IMG } };
         case 'iframe':
             return { styleOptions: { ...IFRAME } };
 
