@@ -11,6 +11,7 @@
 
 <script>
 import showdown from 'showdown';
+import mediumZoom from 'medium-zoom';
 import { getSettingsConfigurations } from './configuration';
 
 export default {
@@ -98,13 +99,16 @@ export default {
         iframe: {
             width: wwLib.responsive('100%'),
         },
-        zoomEffect: false,
+        zoomEffect: true,
+        zoomMargin: '24px',
+        zoomBackgroundColor: 'rgba(0, 0, 0, 0.8)',
     },
     data() {
         return {
             converter: new showdown.Converter({ tables: true, openLinksInNewWindow: true, emoji: true }),
             figures: [],
             isZoomed: false,
+            zoomInstance: null,
         };
     },
     /* wwEditor:start */
@@ -114,18 +118,30 @@ export default {
     /* wwEditor:end */
     watch: {
         'content.text'() {
-            this.removeListener();
             this.init();
         },
         'content.zoomEffect'() {
-            this.$emit('update', { img: { width: wwLib.responsive('90%') } });
-
-            if (this.content.zoomEffect) {
-                this.removeListener();
-                this.init();
-            } else {
-                this.removeListener();
+            if (!this.content.zoomEffect) {
+                this.zoomInstance = null;
             }
+        },
+        'content.zoomBackgroundColor'() {
+            if (this.zoomInstance) this.zoomInstance.detach();
+            const margin = parseInt(this.content.zoomMargin.slice(0, -2));
+            const background = this.content.zoomBackgroundColor;
+            this.zoomInstance = mediumZoom('[img-zoomable]', {
+                margin,
+                background,
+            });
+        },
+        'content.zoomMargin'() {
+            if (this.zoomInstance) this.zoomInstance.detach();
+            const margin = parseInt(this.content.zoomMargin.slice(0, -2));
+            const background = this.content.zoomBackgroundColor;
+            this.zoomInstance = mediumZoom('[img-zoomable]', {
+                margin,
+                background,
+            });
         },
     },
     computed: {
@@ -140,7 +156,6 @@ export default {
             return this.converter.makeHtml(wwLib.wwLang.getText(this.content.text));
         },
         style() {
-            console.log(this.content.img.width);
             return {
                 // H1
                 '--h1-fontSize': this.content.h1.fontSize,
@@ -209,62 +224,28 @@ export default {
                 '--iframe-width': this.content.iframe.width,
             };
         },
-        imgCursor() {
-            if (this.isEditing) return 'auto';
-
-            if (this.content.zoomEffect) {
-                return this.isZoomed ? 'zoom-out' : 'zoom-in';
-            }
-
-            return 'auto';
-        },
     },
     methods: {
         init() {
             if (!this.content.zoomEffect) return;
 
-            this.figures = this.$el.querySelectorAll('figure');
+            this.figures = this.$el.querySelectorAll('img');
 
             for (let figure of this.figures) {
-                figure.addEventListener('click', () => this.zoom(figure));
+                figure.setAttribute('img-zoomable', '');
             }
 
-            document.addEventListener('scroll', this.reset);
-        },
-        zoom(figure) {
-            if (!this.content.zoomEffect) return;
-            if (this.isZoomed) {
-                this.reset();
-                return;
-            }
-
-            figure.classList.add('zoom');
-            figure.firstChild.style.width = '100%';
-
-            this.isZoomed = true;
-        },
-        reset() {
-            for (let figure of this.figures) {
-                figure.classList.remove('zoom');
-                figure.firstChild.style.width = this.content.img.width;
-            }
-
-            this.isZoomed = false;
-        },
-        removeListener() {
-            for (let figure of this.figures) {
-                figure.removeEventListener('click', () => this.zoom(figure));
-            }
-            document.removeEventListener('scroll', () => this.reset());
+            if (this.zoomInstance) this.zoomInstance.detach();
+            this.zoomInstance = mediumZoom('[img-zoomable]', {
+                margin: parseInt(this.content.zoomMargin.slice(0, -2)),
+                background: this.content.zoomBackgroundColor,
+            });
         },
     },
     mounted() {
         if (this.content.zoomEffect) {
             this.init();
         }
-    },
-    beforeDestroy() {
-        this.removeListener();
     },
 };
 </script>
@@ -380,35 +361,20 @@ export default {
         margin: 1rem 0;
         padding: 0.25rem 0 0.25rem 1rem;
     }
-    figure {
-        z-index: 20;
+    p > img {
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        width: 100%;
-        margin: 0;
-        text-align: center;
-        backdrop-filter: blur(12px);
 
-        &:hover {
-            cursor: var(--img-cursor);
-        }
-
-        &.zoom {
-            position: fixed;
-            z-index: 100;
-            width: 100vw;
-            height: 100vh;
-            left: 50%;
-            top: 50%;
-            background-color: rgba($color: #000000, $alpha: 0.6);
-            transform: translate3d(-50%, -50%, 50px);
+        img {
+            width: var(--img-width);
+            margin: 24px auto;
+            max-width: 100vh;
         }
     }
     img {
-        transition: 0.2s;
         width: var(--img-width);
         margin: 24px auto;
+        max-width: 100vh;
     }
     iframe {
         width: var(--video-width);
