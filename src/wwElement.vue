@@ -101,7 +101,7 @@ export default {
         },
         zoomEffect: true,
         zoomMargin: '24px',
-        zoomBackgroundColor: 'rgba(0, 0, 0, 0.8)',
+        zoomBackgroundColor: 'rgba(0, 0, 0, 0.6)',
     },
     data() {
         return {
@@ -122,7 +122,7 @@ export default {
         },
         'content.zoomEffect'() {
             if (!this.content.zoomEffect) {
-                this.zoomInstance.detach();
+                if (this.zoomInstance) this.zoomInstance.detach();
                 this.zoomInstance = null;
             }
         },
