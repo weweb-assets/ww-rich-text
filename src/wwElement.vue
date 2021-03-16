@@ -122,6 +122,7 @@ export default {
         },
         'content.zoomEffect'() {
             if (!this.content.zoomEffect) {
+                this.zoomInstance.detach();
                 this.zoomInstance = null;
             }
         },
