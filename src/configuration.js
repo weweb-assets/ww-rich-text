@@ -545,7 +545,73 @@ const BLOCKQUOTE = {
     },
 };
 
+const IMG = {
+    width: {
+        type: 'Length',
+        label: {
+            en: 'Size',
+            fr: 'Taille',
+        },
+        options: {
+            unitChoices: [
+                { value: '%', label: '%', min: 1, max: 100 },
+                { value: 'px', label: 'px', min: 1 },
+            ],
+        },
+        path: 'img.width',
+    },
+    zoomEffect: {
+        type: 'OnOff',
+        label: {
+            en: 'Lightbox on click',
+            fr: 'Lightbox au click',
+        },
+        path: 'zoomEffect',
+    },
+};
+
+const IMG_ZOOM_EFFECT = {
+    zoomMargin: {
+        type: 'Length',
+        label: {
+            en: 'Lightbox spacing',
+            fr: 'Lightbox spacing',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 0, max: 200 }],
+        },
+        path: 'zoomMargin',
+    },
+    zoomBackgroundColor: {
+        type: 'Color',
+        label: {
+            en: 'Lightbox background color',
+            fr: 'Lightbox background color',
+        },
+        path: 'zoomBackgroundColor',
+    },
+};
+
+const IFRAME = {
+    width: {
+        type: 'Length',
+        label: {
+            en: 'Size',
+            fr: 'Taille',
+        },
+        options: {
+            unitChoices: [
+                { value: '%', label: '%', min: 1, max: 100 },
+                { value: 'px', label: 'px', min: 1 },
+            ],
+        },
+        path: 'iframe.width',
+    },
+};
+
 export const getSettingsConfigurations = content => {
+    const IMG_OPTIONS = content.zoomEffect ? { ...IMG, ...IMG_ZOOM_EFFECT } : { ...IMG };
+
     switch (content.selectedTag) {
         case 'h1':
             return { styleOptions: { ...H1 } };
@@ -565,6 +631,10 @@ export const getSettingsConfigurations = content => {
             return { styleOptions: { ...A } };
         case 'blockquote':
             return { styleOptions: { ...BLOCKQUOTE } };
+        case 'img':
+            return { styleOptions: { ...IMG_OPTIONS } };
+        case 'iframe':
+            return { styleOptions: { ...IFRAME } };
 
         default:
             return { styleOptions: { ...P } };

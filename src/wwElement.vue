@@ -2,7 +2,7 @@
     <div class="ww-rich-text-temp">
         <div v-if="html.length" class="ww-rich-text-temp" v-html="html" :style="style"></div>
         <!-- wwEditor:start -->
-        <div v-else class="ww-rich-text-temp__placeholder caption-m">
+        <div v-else-if="isEditing" class="ww-rich-text-temp__placeholder caption-m">
             Enter markdown or html in the sidebar to preview the result.
         </div>
         <!-- wwEditor:end -->
@@ -11,6 +11,7 @@
 
 <script>
 import showdown from 'showdown';
+import mediumZoom from 'medium-zoom';
 import { getSettingsConfigurations } from './configuration';
 
 export default {
@@ -92,10 +93,22 @@ export default {
             color: wwLib.responsive('rgb(153, 153, 153)'),
             borderColor: wwLib.responsive('rgb(223, 226, 229)'),
         },
+        img: {
+            width: wwLib.responsive('100%'),
+        },
+        iframe: {
+            width: wwLib.responsive('100%'),
+        },
+        zoomEffect: true,
+        zoomMargin: '24px',
+        zoomBackgroundColor: 'rgba(0, 0, 0, 0.6)',
     },
     data() {
         return {
             converter: new showdown.Converter({ tables: true, openLinksInNewWindow: true, emoji: true }),
+            figures: [],
+            isZoomed: false,
+            zoomInstance: null,
         };
     },
     /* wwEditor:start */
@@ -103,7 +116,43 @@ export default {
         return getSettingsConfigurations(content);
     },
     /* wwEditor:end */
+    watch: {
+        'content.text'() {
+            this.init();
+        },
+        'content.zoomEffect'() {
+            if (!this.content.zoomEffect) {
+                if (this.zoomInstance) this.zoomInstance.detach();
+                this.zoomInstance = null;
+            }
+        },
+        'content.zoomBackgroundColor'() {
+            if (this.zoomInstance) this.zoomInstance.detach();
+            const margin = parseInt(this.content.zoomMargin.slice(0, -2));
+            const background = this.content.zoomBackgroundColor;
+            this.zoomInstance = mediumZoom('[img-zoomable]', {
+                margin,
+                background,
+            });
+        },
+        'content.zoomMargin'() {
+            if (this.zoomInstance) this.zoomInstance.detach();
+            const margin = parseInt(this.content.zoomMargin.slice(0, -2));
+            const background = this.content.zoomBackgroundColor;
+            this.zoomInstance = mediumZoom('[img-zoomable]', {
+                margin,
+                background,
+            });
+        },
+    },
     computed: {
+        isEditing() {
+            /* wwEditor:start */
+            return this.wwEditorState.editMode === wwLib.wwSectionHelper.EDIT_MODES.CONTENT;
+            /* wwEditor:end */
+            // eslint-disable-next-line no-unreachable
+            return false;
+        },
         html() {
             return this.converter.makeHtml(wwLib.wwLang.getText(this.content.text));
         },
@@ -169,8 +218,35 @@ export default {
                 // blockquote
                 '--blockquote-color': this.content.blockquote.color,
                 '--blockquote-borderColor': this.content.blockquote.borderColor,
+                // images
+                '--img-width': this.content.img.width,
+                '--img-cursor': this.imgCursor,
+                // iframe
+                '--iframe-width': this.content.iframe.width,
             };
         },
+    },
+    methods: {
+        init() {
+            if (!this.content.zoomEffect) return;
+
+            this.figures = this.$el.querySelectorAll('img');
+
+            for (let figure of this.figures) {
+                figure.setAttribute('img-zoomable', '');
+            }
+
+            if (this.zoomInstance) this.zoomInstance.detach();
+            this.zoomInstance = mediumZoom('[img-zoomable]', {
+                margin: parseInt(this.content.zoomMargin.slice(0, -2)),
+                background: this.content.zoomBackgroundColor,
+            });
+        },
+    },
+    mounted() {
+        if (this.content.zoomEffect) {
+            this.init();
+        }
     },
 };
 </script>
@@ -286,11 +362,23 @@ export default {
         margin: 1rem 0;
         padding: 0.25rem 0 0.25rem 1rem;
     }
-    img,
-    video,
+    p > img {
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: var(--img-width);
+            margin: 24px auto;
+            max-width: 100vh;
+        }
+    }
+    img {
+        width: var(--img-width);
+        margin: 24px auto;
+        max-width: 100vh;
+    }
     iframe {
-        max-width: 100%;
-        width: 100%;
+        width: var(--video-width);
         margin: 24px auto;
     }
 }

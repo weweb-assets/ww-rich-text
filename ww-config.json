@@ -22,7 +22,9 @@
                         { "value": "h6", "label": { "en": "h6" } },
                         { "value": "p", "label": { "en": "p" } },
                         { "value": "a", "label": { "en": "a" } },
-                        { "value": "blockquote", "label": { "en": "blockquote" } }
+                        { "value": "blockquote", "label": { "en": "blockquote" } },
+                        { "value": "img", "label": { "en": "image" } },
+                        { "value": "iframe", "label": { "en": "iframe & video" } }
                     ]
                 }
             }
