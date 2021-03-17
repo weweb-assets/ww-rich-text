@@ -563,8 +563,8 @@ const IMG = {
     zoomEffect: {
         type: 'OnOff',
         label: {
-            en: 'Zoom on click',
-            fr: 'Zoom au click',
+            en: 'Lightbox on click',
+            fr: 'Lightbox au click',
         },
         path: 'zoomEffect',
     },
@@ -574,8 +574,8 @@ const IMG_ZOOM_EFFECT = {
     zoomMargin: {
         type: 'Length',
         label: {
-            en: 'Zoom margin',
-            fr: 'Zoom margin',
+            en: 'Lightbox spacing',
+            fr: 'Lightbox spacing',
         },
         options: {
             unitChoices: [{ value: 'px', label: 'px', min: 0, max: 200 }],
@@ -585,8 +585,8 @@ const IMG_ZOOM_EFFECT = {
     zoomBackgroundColor: {
         type: 'Color',
         label: {
-            en: 'Zoom background color',
-            fr: 'Zoom background color',
+            en: 'Lightbox background color',
+            fr: 'Lightbox background color',
         },
         path: 'zoomBackgroundColor',
     },
