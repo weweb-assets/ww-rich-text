@@ -339,21 +339,37 @@ export default {
     line-height: var(--p-lineHeight);
 
     table {
+        margin: 64px 0 !important;
         width: 100%;
         display: table;
         border-collapse: collapse;
         box-sizing: border-box;
         text-indent: initial;
         border-spacing: 2px;
-        border-color: grey;
 
-        tr {
-            border-top: 1px solid #dfe2e5;
+        thead > tr {
+            background: #f7f7fa;
+
+            th {
+                color: #5a6482;
+                font-family: Work Sans;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 15px;
+                line-height: 18px;
+                letter-spacing: -0.08px;
+            }
         }
         td,
         th {
-            border: 1px solid #dfe2e5;
-            padding: 0.6em 1em;
+            text-align: left;
+            padding: 1.25em 1rem !important;
+        }
+        tbody {
+            border: 1px solid #d1cfd7;
+            tr:nth-child(2n) {
+                background: #f7f7fa;
+            }
         }
     }
     blockquote {
@@ -361,6 +377,10 @@ export default {
         border-left: 0.2rem solid var(--blockquote-borderColor);
         margin: 1rem 0;
         padding: 0.25rem 0 0.25rem 1rem;
+    }
+    figure {
+        margin: 0;
+        text-align: center;
     }
     p > img {
         display: flex;
@@ -374,7 +394,7 @@ export default {
     }
     img {
         width: var(--img-width);
-        margin: 24px auto;
+        margin: 52px auto;
         max-width: 100vh;
     }
     iframe {
