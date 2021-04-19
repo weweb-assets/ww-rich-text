@@ -96,6 +96,17 @@ const H1 = {
         },
         path: 'h1.lineHeight',
     },
+    spacing: {
+        type: 'Length',
+        label: {
+            en: 'Spacing',
+            fr: 'Spacing',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'h1.spacing',
+    },
 };
 
 const H2 = {
@@ -195,6 +206,17 @@ const H2 = {
             unitChoices: [{ value: 'px', label: 'px', min: 0, max: 100 }],
         },
         path: 'h2.lineHeight',
+    },
+    spacing: {
+        type: 'Length',
+        label: {
+            en: 'Spacing',
+            fr: 'Spacing',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'h2.spacing',
     },
 };
 
@@ -296,6 +318,17 @@ const H3 = {
         },
         path: 'h3.lineHeight',
     },
+    spacing: {
+        type: 'Length',
+        label: {
+            en: 'Spacing',
+            fr: 'Spacing',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'h3.spacing',
+    },
 };
 
 const H4 = {
@@ -396,6 +429,17 @@ const H4 = {
         },
         path: 'h4.lineHeight',
     },
+    spacing: {
+        type: 'Length',
+        label: {
+            en: 'Spacing',
+            fr: 'Spacing',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'h4.spacing',
+    },
 };
 
 const P = {
@@ -474,6 +518,17 @@ const P = {
         },
         path: 'p.lineHeight',
     },
+    spacing: {
+        type: 'Length',
+        label: {
+            en: 'Spacing',
+            fr: 'Spacing',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'p.spacing',
+    },
 };
 
 const A = {
@@ -543,6 +598,17 @@ const BLOCKQUOTE = {
         },
         path: 'blockquote.borderColor',
     },
+    spacing: {
+        type: 'Length',
+        label: {
+            en: 'Spacing',
+            fr: 'Spacing',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'blockquote.spacing',
+    },
 };
 
 const IMG = {
@@ -567,6 +633,17 @@ const IMG = {
             fr: 'Lightbox au click',
         },
         path: 'zoomEffect',
+    },
+    spacing: {
+        type: 'Length',
+        label: {
+            en: 'Spacing',
+            fr: 'Spacing',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'img.spacing',
     },
 };
 
@@ -607,6 +684,17 @@ const IFRAME = {
         },
         path: 'iframe.width',
     },
+    spacing: {
+        type: 'Length',
+        label: {
+            en: 'Spacing',
+            fr: 'Spacing',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'iframe.spacing',
+    },
 };
 
 export const getSettingsConfigurations = content => {
@@ -621,10 +709,6 @@ export const getSettingsConfigurations = content => {
             return { styleOptions: { ...H3 } };
         case 'h4':
             return { styleOptions: { ...H4 } };
-        case 'h5':
-            return { styleOptions: { ...H1 } };
-        case 'h6':
-            return { styleOptions: { ...H1 } };
         case 'p':
             return { styleOptions: { ...P } };
         case 'a':

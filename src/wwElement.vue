@@ -34,6 +34,7 @@ export default {
             textAlign: wwLib.responsive(''),
             color: wwLib.responsive(''),
             lineHeight: wwLib.responsive('32px'),
+            spacing: wwLib.responsive('6px'),
         },
         h2: {
             fontSize: wwLib.responsive('24px'),
@@ -42,6 +43,7 @@ export default {
             textAlign: wwLib.responsive(''),
             color: wwLib.responsive(''),
             lineHeight: wwLib.responsive('32px'),
+            spacing: wwLib.responsive('6px'),
         },
         h3: {
             fontSize: wwLib.responsive('19px'),
@@ -50,6 +52,7 @@ export default {
             textAlign: wwLib.responsive(''),
             color: wwLib.responsive(''),
             lineHeight: wwLib.responsive('32px'),
+            spacing: wwLib.responsive('6px'),
         },
         h4: {
             fontSize: wwLib.responsive('16px'),
@@ -58,22 +61,7 @@ export default {
             textAlign: wwLib.responsive(''),
             color: wwLib.responsive(''),
             lineHeight: wwLib.responsive('32px'),
-        },
-        h5: {
-            fontSize: wwLib.responsive('13px'),
-            fontFamily: wwLib.responsive(''),
-            fontWeight: wwLib.responsive(''),
-            textAlign: wwLib.responsive(''),
-            color: wwLib.responsive(''),
-            lineHeight: wwLib.responsive('32px'),
-        },
-        h6: {
-            fontSize: wwLib.responsive('10px'),
-            fontFamily: wwLib.responsive(''),
-            fontWeight: wwLib.responsive(''),
-            textAlign: wwLib.responsive(''),
-            color: wwLib.responsive(''),
-            lineHeight: wwLib.responsive('32px'),
+            spacing: wwLib.responsive('6px'),
         },
         p: {
             fontSize: wwLib.responsive('16px'),
@@ -82,6 +70,7 @@ export default {
             textAlign: wwLib.responsive(''),
             color: wwLib.responsive(''),
             lineHeight: wwLib.responsive('25px'),
+            spacing: wwLib.responsive('6px'),
         },
         a: {
             fontSize: wwLib.responsive('16px'),
@@ -92,12 +81,15 @@ export default {
         blockquote: {
             color: wwLib.responsive('rgb(153, 153, 153)'),
             borderColor: wwLib.responsive('rgb(223, 226, 229)'),
+            spacing: wwLib.responsive('6px'),
         },
         img: {
             width: wwLib.responsive('100%'),
+            spacing: wwLib.responsive('6px'),
         },
         iframe: {
             width: wwLib.responsive('100%'),
+            spacing: wwLib.responsive('6px'),
         },
         zoomEffect: true,
         zoomMargin: '24px',
@@ -165,6 +157,7 @@ export default {
                 '--h1-textAlign': this.content.h1.textAlign,
                 '--h1-color': this.content.h1.color,
                 '--h1-lineHeight': this.content.h1.lineHeight,
+                '--h1-spacing': this.content.h1.spacing,
                 // H2
                 '--h2-fontSize': this.content.h2.fontSize,
                 '--h2-fontFamily': this.content.h2.fontFamily,
@@ -172,6 +165,7 @@ export default {
                 '--h2-textAlign': this.content.h2.textAlign,
                 '--h2-color': this.content.h2.color,
                 '--h2-lineHeight': this.content.h2.lineHeight,
+                '--h2-spacing': this.content.h2.spacing,
                 // H3
                 '--h3-fontSize': this.content.h3.fontSize,
                 '--h3-fontFamily': this.content.h3.fontFamily,
@@ -179,6 +173,7 @@ export default {
                 '--h3-textAlign': this.content.h3.textAlign,
                 '--h3-color': this.content.h3.color,
                 '--h3-lineHeight': this.content.h3.lineHeight,
+                '--h3-spacing': this.content.h3.spacing,
                 // H4
                 '--h4-fontSize': this.content.h4.fontSize,
                 '--h4-fontFamily': this.content.h4.fontFamily,
@@ -186,20 +181,7 @@ export default {
                 '--h4-textAlign': this.content.h4.textAlign,
                 '--h4-color': this.content.h4.color,
                 '--h4-lineHeight': this.content.h4.lineHeight,
-                // H5
-                '--h5-fontSize': this.content.h3.fontSize,
-                '--h5-fontFamily': this.content.h3.fontFamily,
-                '--h5-fontWeight': this.content.h3.fontWeight,
-                '--h5-textAlign': this.content.h3.textAlign,
-                '--h5-color': this.content.h3.color,
-                '--h5-lineHeight': this.content.h3.lineHeight,
-                // H6
-                '--h6-fontSize': this.content.h6.fontSize,
-                '--h6-fontFamily': this.content.h6.fontFamily,
-                '--h6-fontWeight': this.content.h6.fontWeight,
-                '--h6-textAlign': this.content.h6.textAlign,
-                '--h6-color': this.content.h6.color,
-                '--h6-lineHeight': this.content.h6.lineHeight,
+                '--h4-spacing': this.content.h4.spacing,
                 // p
                 '--p-fontSize': this.content.p.fontSize,
                 '--p-fontFamily': this.content.p.fontFamily,
@@ -207,6 +189,7 @@ export default {
                 '--p-textAlign': this.content.p.textAlign,
                 '--p-color': this.content.p.color,
                 '--p-lineHeight': this.content.p.lineHeight,
+                '--p-spacing': this.content.p.spacing,
                 // a
                 '--a-fontSize': this.content.a.fontSize,
                 '--a-fontFamily': this.content.a.fontFamily,
@@ -218,11 +201,14 @@ export default {
                 // blockquote
                 '--blockquote-color': this.content.blockquote.color,
                 '--blockquote-borderColor': this.content.blockquote.borderColor,
+                '--blockquote-spacing': this.content.blockquote.spacing,
                 // images
                 '--img-width': this.content.img.width,
                 '--img-cursor': this.imgCursor,
+                '--img-spacing': this.content.img.spacing,
                 // iframe
                 '--iframe-width': this.content.iframe.width,
+                '--iframe-spacing': this.content.iframe.spacing,
             };
         },
     },
@@ -272,6 +258,7 @@ export default {
         text-align: var(--h1-textAlign);
         color: var(--h1-color);
         line-height: var(--h1-lineHeight);
+        margin: var(--h1-spacing) auto;
     }
     h2 {
         font-size: var(--h2-fontSize);
@@ -280,6 +267,7 @@ export default {
         text-align: var(--h2-textAlign);
         color: var(--h2-color);
         line-height: var(--h2-lineHeight);
+        margin: var(--h2-spacing) auto;
     }
     h3 {
         font-size: var(--h3-fontSize);
@@ -288,6 +276,7 @@ export default {
         text-align: var(--h3-textAlign);
         color: var(--h3-color);
         line-height: var(--h3-lineHeight);
+        margin: var(--h3-spacing) auto;
     }
     h4 {
         font-size: var(--h4-fontSize);
@@ -296,22 +285,7 @@ export default {
         text-align: var(--h4-textAlign);
         color: var(--h4-color);
         line-height: var(--h4-lineHeight);
-    }
-    h5 {
-        font-size: var(--h5-fontSize);
-        font-family: var(--h5-fontFamily);
-        font-weight: var(--h5-fontSize);
-        text-align: var(--h5-textAlign);
-        color: var(--h5-color);
-        line-height: var(--h5-lineHeight);
-    }
-    h6 {
-        font-size: var(--h6-fontSize);
-        font-family: var(--h6-fontFamily);
-        font-weight: var(--h6-fontSize);
-        text-align: var(--h6-textAlign);
-        color: var(--h6-color);
-        line-height: var(--h6-lineHeight);
+        margin: var(--h4-spacing) auto;
     }
     p {
         font-size: var(--p-fontSize);
@@ -320,6 +294,7 @@ export default {
         text-align: var(--p-textAlign);
         color: var(--p-color);
         line-height: var(--p-lineHeight);
+        margin: var(--p-spacing) auto;
     }
     a {
         display: initial;
@@ -377,6 +352,7 @@ export default {
         border-left: 0.2rem solid var(--blockquote-borderColor);
         margin: 1rem 0;
         padding: 0.25rem 0 0.25rem 1rem;
+        margin: var(--blockquote-spacing) auto;
     }
     figure {
         margin: 0;
@@ -396,10 +372,12 @@ export default {
         width: var(--img-width);
         margin: 52px auto;
         max-width: 100vh;
+        margin: var(--blockquote-spacing) auto;
     }
     iframe {
         width: var(--video-width);
         margin: 24px auto;
+        margin: var(--blockquote-spacing) auto;
     }
 }
 </style>
