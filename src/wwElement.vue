@@ -327,7 +327,7 @@ export default {
 
     table {
         margin: 64px 0 !important;
-        width: 100%;
+        width: 100% !important;
         display: table;
         border-collapse: collapse;
         box-sizing: border-box;
