@@ -96,16 +96,27 @@ const H1 = {
         },
         path: 'h1.lineHeight',
     },
-    spacing: {
+    marginTop: {
         type: 'Length',
         label: {
-            en: 'Spacing',
-            fr: 'Spacing',
+            en: 'Margin top',
+            fr: 'Margin top',
         },
         options: {
             unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
         },
-        path: 'h1.spacing',
+        path: 'h1.marginTop',
+    },
+    marginBottom: {
+        type: 'Length',
+        label: {
+            en: 'Margin bottom',
+            fr: 'Margin bottom',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'h1.marginBottom',
     },
 };
 
@@ -207,16 +218,27 @@ const H2 = {
         },
         path: 'h2.lineHeight',
     },
-    spacing: {
+    marginTop: {
         type: 'Length',
         label: {
-            en: 'Spacing',
-            fr: 'Spacing',
+            en: 'Margin top',
+            fr: 'Margin top',
         },
         options: {
             unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
         },
-        path: 'h2.spacing',
+        path: 'h2.marginTop',
+    },
+    marginBottom: {
+        type: 'Length',
+        label: {
+            en: 'Margin bottom',
+            fr: 'Margin bottom',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'h2.marginBottom',
     },
 };
 
@@ -318,16 +340,27 @@ const H3 = {
         },
         path: 'h3.lineHeight',
     },
-    spacing: {
+    marginTop: {
         type: 'Length',
         label: {
-            en: 'Spacing',
-            fr: 'Spacing',
+            en: 'Margin top',
+            fr: 'Margin top',
         },
         options: {
             unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
         },
-        path: 'h3.spacing',
+        path: 'h3.marginTop',
+    },
+    marginBottom: {
+        type: 'Length',
+        label: {
+            en: 'Margin bottom',
+            fr: 'Margin bottom',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'h3.marginBottom',
     },
 };
 
@@ -429,16 +462,27 @@ const H4 = {
         },
         path: 'h4.lineHeight',
     },
-    spacing: {
+    marginTop: {
         type: 'Length',
         label: {
-            en: 'Spacing',
-            fr: 'Spacing',
+            en: 'Margin top',
+            fr: 'Margin top',
         },
         options: {
             unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
         },
-        path: 'h4.spacing',
+        path: 'h4.marginTop',
+    },
+    marginBottom: {
+        type: 'Length',
+        label: {
+            en: 'Margin bottom',
+            fr: 'Margin bottom',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'h4.marginBottom',
     },
 };
 
@@ -518,16 +562,27 @@ const P = {
         },
         path: 'p.lineHeight',
     },
-    spacing: {
+    marginTop: {
         type: 'Length',
         label: {
-            en: 'Spacing',
-            fr: 'Spacing',
+            en: 'Margin top',
+            fr: 'Margin top',
         },
         options: {
             unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
         },
-        path: 'p.spacing',
+        path: 'p.marginTop',
+    },
+    marginBottom: {
+        type: 'Length',
+        label: {
+            en: 'Margin bottom',
+            fr: 'Margin bottom',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'p.marginBottom',
     },
 };
 
@@ -598,16 +653,27 @@ const BLOCKQUOTE = {
         },
         path: 'blockquote.borderColor',
     },
-    spacing: {
+    marginTop: {
         type: 'Length',
         label: {
-            en: 'Spacing',
-            fr: 'Spacing',
+            en: 'Margin top',
+            fr: 'Margin top',
         },
         options: {
             unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
         },
-        path: 'blockquote.spacing',
+        path: 'blockquote.marginTop',
+    },
+    marginBottom: {
+        type: 'Length',
+        label: {
+            en: 'Margin bottom',
+            fr: 'Margin bottom',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'blockquote.marginBottom',
     },
 };
 
@@ -634,16 +700,27 @@ const IMG = {
         },
         path: 'zoomEffect',
     },
-    spacing: {
+    marginTop: {
         type: 'Length',
         label: {
-            en: 'Spacing',
-            fr: 'Spacing',
+            en: 'Margin top',
+            fr: 'Margin top',
         },
         options: {
             unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
         },
-        path: 'img.spacing',
+        path: 'img.marginTop',
+    },
+    marginBottom: {
+        type: 'Length',
+        label: {
+            en: 'Margin bottom',
+            fr: 'Margin bottom',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'img.marginBottom',
     },
 };
 
@@ -684,16 +761,27 @@ const IFRAME = {
         },
         path: 'iframe.width',
     },
-    spacing: {
+    marginTop: {
         type: 'Length',
         label: {
-            en: 'Spacing',
-            fr: 'Spacing',
+            en: 'Margin top',
+            fr: 'Margin top',
         },
         options: {
             unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
         },
-        path: 'iframe.spacing',
+        path: 'iframe.marginTop',
+    },
+    marginBottom: {
+        type: 'Length',
+        label: {
+            en: 'Margin bottom',
+            fr: 'Margin bottom',
+        },
+        options: {
+            unitChoices: [{ value: 'px', label: 'px', min: 1, max: 100 }],
+        },
+        path: 'iframe.marginBottom',
     },
 };
 

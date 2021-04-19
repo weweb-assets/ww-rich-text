@@ -157,7 +157,8 @@ export default {
                 '--h1-textAlign': this.content.h1.textAlign,
                 '--h1-color': this.content.h1.color,
                 '--h1-lineHeight': this.content.h1.lineHeight,
-                '--h1-spacing': this.content.h1.spacing,
+                '--h1-margin-top': this.content.h1.marginTop,
+                '--h1-margin-bottom': this.content.h1.marginBottom,
                 // H2
                 '--h2-fontSize': this.content.h2.fontSize,
                 '--h2-fontFamily': this.content.h2.fontFamily,
@@ -165,7 +166,8 @@ export default {
                 '--h2-textAlign': this.content.h2.textAlign,
                 '--h2-color': this.content.h2.color,
                 '--h2-lineHeight': this.content.h2.lineHeight,
-                '--h2-spacing': this.content.h2.spacing,
+                '--h2-margin-top': this.content.h2.marginTop,
+                '--h2-margin-bottom': this.content.h2.marginBottom,
                 // H3
                 '--h3-fontSize': this.content.h3.fontSize,
                 '--h3-fontFamily': this.content.h3.fontFamily,
@@ -173,7 +175,8 @@ export default {
                 '--h3-textAlign': this.content.h3.textAlign,
                 '--h3-color': this.content.h3.color,
                 '--h3-lineHeight': this.content.h3.lineHeight,
-                '--h3-spacing': this.content.h3.spacing,
+                '--h3-margin-top': this.content.h3.marginTop,
+                '--h3-margin-bottom': this.content.h3.marginBottom,
                 // H4
                 '--h4-fontSize': this.content.h4.fontSize,
                 '--h4-fontFamily': this.content.h4.fontFamily,
@@ -181,7 +184,8 @@ export default {
                 '--h4-textAlign': this.content.h4.textAlign,
                 '--h4-color': this.content.h4.color,
                 '--h4-lineHeight': this.content.h4.lineHeight,
-                '--h4-spacing': this.content.h4.spacing,
+                '--h4-margin-top': this.content.h4.marginTop,
+                '--h4-margin-bottom': this.content.h4.marginBottom,
                 // p
                 '--p-fontSize': this.content.p.fontSize,
                 '--p-fontFamily': this.content.p.fontFamily,
@@ -189,7 +193,8 @@ export default {
                 '--p-textAlign': this.content.p.textAlign,
                 '--p-color': this.content.p.color,
                 '--p-lineHeight': this.content.p.lineHeight,
-                '--p-spacing': this.content.p.spacing,
+                '--p-margin-top': this.content.p.marginTop,
+                '--p-margin-bottom': this.content.p.marginBottom,
                 // a
                 '--a-fontSize': this.content.a.fontSize,
                 '--a-fontFamily': this.content.a.fontFamily,
@@ -201,14 +206,17 @@ export default {
                 // blockquote
                 '--blockquote-color': this.content.blockquote.color,
                 '--blockquote-borderColor': this.content.blockquote.borderColor,
-                '--blockquote-spacing': this.content.blockquote.spacing,
+                '--blockquote-margin-top': this.content.blockquote.marginTop,
+                '--blockquote-margin-bottom': this.content.blockquote.marginBottom,
                 // images
                 '--img-width': this.content.img.width,
                 '--img-cursor': this.imgCursor,
-                '--img-spacing': this.content.img.spacing,
+                '--img-margin-top': this.content.img.marginTop,
+                '--img-margin-bottom': this.content.img.marginBottom,
                 // iframe
                 '--iframe-width': this.content.iframe.width,
-                '--iframe-spacing': this.content.iframe.spacing,
+                '--iframe-margin-top': this.content.iframe.marginTop,
+                '--iframe-margin-bottom': this.content.iframe.marginBottom,
             };
         },
     },
@@ -254,54 +262,58 @@ export default {
     h1 {
         font-size: var(--h1-fontSize);
         font-family: var(--h1-fontFamily);
-        font-weight: var(--h1-fontSize);
+        font-weight: var(--h1-fontWeight);
         text-align: var(--h1-textAlign);
         color: var(--h1-color);
         line-height: var(--h1-lineHeight);
-        margin: var(--h1-spacing) auto;
+        margin-top: var(--h1-margin-top);
+        margin-bottom: var(--h1-margin-bottom);
     }
     h2 {
         font-size: var(--h2-fontSize);
         font-family: var(--h2-fontFamily);
-        font-weight: var(--h2-fontSize);
+        font-weight: var(--h2-fontWeight);
         text-align: var(--h2-textAlign);
         color: var(--h2-color);
-        line-height: var(--h2-lineHeight);
-        margin: var(--h2-spacing) auto;
+        margin-top: var(--h2-margin-top);
+        margin-bottom: var(--h2-margin-bottom);
     }
     h3 {
         font-size: var(--h3-fontSize);
         font-family: var(--h3-fontFamily);
-        font-weight: var(--h3-fontSize);
+        font-weight: var(--h3-fontWeight);
         text-align: var(--h3-textAlign);
         color: var(--h3-color);
         line-height: var(--h3-lineHeight);
-        margin: var(--h3-spacing) auto;
+        margin-top: var(--h3-margin-top);
+        margin-bottom: var(--h3-margin-bottom);
     }
     h4 {
         font-size: var(--h4-fontSize);
         font-family: var(--h4-fontFamily);
-        font-weight: var(--h4-fontSize);
+        font-weight: var(--h4-fontWeight);
         text-align: var(--h4-textAlign);
         color: var(--h4-color);
         line-height: var(--h4-lineHeight);
-        margin: var(--h4-spacing) auto;
+        margin-top: var(--h4-margin-top);
+        margin-bottom: var(--h4-margin-bottom);
     }
     p {
         font-size: var(--p-fontSize);
         font-family: var(--p-fontFamily);
-        font-weight: var(--p-fontSize);
+        font-weight: var(--p-fontWeight);
         text-align: var(--p-textAlign);
         color: var(--p-color);
         line-height: var(--p-lineHeight);
-        margin: var(--p-spacing) auto;
+        margin-top: var(--p-margin-top);
+        margin-bottom: var(--p-margin-bottom);
     }
     a {
         display: initial;
         text-decoration: var(--a-underline);
         font-size: var(--a-fontSize);
         font-family: var(--a-fontFamily);
-        font-weight: var(--a-fontSize);
+        font-weight: var(--a-fontWeight);
         text-align: var(--a-textAlign);
         color: var(--a-color);
         line-height: var(--a-lineHeight);
@@ -352,7 +364,8 @@ export default {
         border-left: 0.2rem solid var(--blockquote-borderColor);
         margin: 1rem 0;
         padding: 0.25rem 0 0.25rem 1rem;
-        margin: var(--blockquote-spacing) auto;
+        margin-top: var(--blockquote-margin-top);
+        margin-bottom: var(--blockquote-margin-bottom);
     }
     figure {
         margin: 0;
@@ -372,12 +385,14 @@ export default {
         width: var(--img-width);
         margin: 52px auto;
         max-width: 100vh;
-        margin: var(--blockquote-spacing) auto;
+        margin-top: var(--img-margin-top);
+        margin-bottom: var(--img-margin-bottom);
     }
     iframe {
         width: var(--video-width);
         margin: 24px auto;
-        margin: var(--blockquote-spacing) auto;
+        margin-top: var(--iframe-margin-top);
+        margin-bottom: var(--iframe-margin-bottom);
     }
 }
 </style>
