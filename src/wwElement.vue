@@ -1,6 +1,6 @@
 <template>
     <div class="ww-rich-text-temp">
-        <div v-if="html.length" class="ww-rich-text-temp" v-html="html" :style="style"></div>
+        <div v-if="html.length" class="ww-rich-text-temp" v-html="html" :style="richTextStyle"></div>
         <!-- wwEditor:start -->
         <div v-else-if="isEditing" class="ww-rich-text-temp__placeholder caption-m">
             Enter markdown or html in the sidebar to preview the result.
@@ -148,7 +148,7 @@ export default {
         html() {
             return this.converter.makeHtml(wwLib.wwLang.getText(this.content.text));
         },
-        style() {
+        richTextStyle() {
             return {
                 // H1
                 '--h1-fontSize': this.content.h1.fontSize,
@@ -248,7 +248,6 @@ export default {
 <style lang="scss" scoped>
 .ww-rich-text-temp {
     /* wwEditor:start */
-    min-height: 50px;
     &__placeholder {
         background-color: var(--ww-color-dark-300);
         padding: var(--ww-spacing-05);
