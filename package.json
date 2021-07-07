@@ -4,7 +4,7 @@
         "type": "git",
         "url": "https://github.com/weweb-assets/ww-rich-text-temp"
     },
-    "version": "1.0.0",
+    "version": "3.0.0",
     "scripts": {
         "build": "weweb build",
         "serve": "weweb serve"
@@ -13,17 +13,16 @@
         "animejs": "^3.2.1",
         "medium-zoom": "^1.0.6",
         "prismjs": "^1.23.0",
-        "showdown": "^1.9.1",
-        "vue": "^2.6.12"
+        "showdown": "^1.9.1"
     },
     "devDependencies": {
         "@types/showdown": "^1.9.3",
         "@vue/eslint-config-prettier": "^6.0.0",
         "@weweb/cli": "latest",
         "babel-eslint": "^10.1.0",
-        "eslint": "^7.10.0",
+        "eslint": "^7.7.0",
         "eslint-plugin-prettier": "^3.1.4",
-        "eslint-plugin-vue": "^6.2.2",
+        "eslint-plugin-vue": "7.0.0-beta.4",
         "prettier": "^2.1.2"
     },
     "license": "MIT"

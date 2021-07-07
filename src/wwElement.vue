@@ -1,6 +1,6 @@
 <template>
     <div class="ww-rich-text-temp">
-        <div v-if="html.length" class="ww-rich-text-temp" v-html="html" :style="richTextStyle"></div>
+        <div v-if="html.length" class="ww-rich-text-temp" :style="richTextStyle" v-html="html"></div>
         <!-- wwEditor:start -->
         <div v-else-if="isEditing" class="ww-rich-text-temp__placeholder caption-m">
             Enter markdown or html in the sidebar to preview the result.
@@ -15,11 +15,10 @@ import mediumZoom from 'medium-zoom';
 import { getSettingsConfigurations } from './configuration';
 
 export default {
-    name: '__COMPONENT_NAME__',
     props: {
-        content: Object,
+        content: { type: Object, required: true },
         /* wwEditor:start */
-        wwEditorState: Object,
+        wwEditorState: { type: Object, required: true },
         /* wwEditor:end */
     },
     wwDefaultContent: {
@@ -107,40 +106,10 @@ export default {
     wwEditorConfiguration({ content }) {
         return getSettingsConfigurations(content);
     },
-    /* wwEditor:end */
-    watch: {
-        'content.text'() {
-            this.init();
-        },
-        'content.zoomEffect'() {
-            if (!this.content.zoomEffect) {
-                if (this.zoomInstance) this.zoomInstance.detach();
-                this.zoomInstance = null;
-            }
-        },
-        'content.zoomBackgroundColor'() {
-            if (this.zoomInstance) this.zoomInstance.detach();
-            const margin = parseInt(this.content.zoomMargin.slice(0, -2));
-            const background = this.content.zoomBackgroundColor;
-            this.zoomInstance = mediumZoom('[img-zoomable]', {
-                margin,
-                background,
-            });
-        },
-        'content.zoomMargin'() {
-            if (this.zoomInstance) this.zoomInstance.detach();
-            const margin = parseInt(this.content.zoomMargin.slice(0, -2));
-            const background = this.content.zoomBackgroundColor;
-            this.zoomInstance = mediumZoom('[img-zoomable]', {
-                margin,
-                background,
-            });
-        },
-    },
     computed: {
         isEditing() {
             /* wwEditor:start */
-            return this.wwEditorState.editMode === wwLib.wwSectionHelper.EDIT_MODES.CONTENT;
+            return this.wwEditorState.editMode === wwLib.wwEditorHelper.EDIT_MODES.EDITION;
             /* wwEditor:end */
             // eslint-disable-next-line no-unreachable
             return false;
@@ -220,6 +189,41 @@ export default {
             };
         },
     },
+    /* wwEditor:end */
+    watch: {
+        'content.text'() {
+            this.init();
+        },
+        'content.zoomEffect'() {
+            if (!this.content.zoomEffect) {
+                if (this.zoomInstance) this.zoomInstance.detach();
+                this.zoomInstance = null;
+            }
+        },
+        'content.zoomBackgroundColor'() {
+            if (this.zoomInstance) this.zoomInstance.detach();
+            const margin = parseInt(this.content.zoomMargin.slice(0, -2));
+            const background = this.content.zoomBackgroundColor;
+            this.zoomInstance = mediumZoom('[img-zoomable]', {
+                margin,
+                background,
+            });
+        },
+        'content.zoomMargin'() {
+            if (this.zoomInstance) this.zoomInstance.detach();
+            const margin = parseInt(this.content.zoomMargin.slice(0, -2));
+            const background = this.content.zoomBackgroundColor;
+            this.zoomInstance = mediumZoom('[img-zoomable]', {
+                margin,
+                background,
+            });
+        },
+    },
+    mounted() {
+        if (this.content.zoomEffect) {
+            this.init();
+        }
+    },
     methods: {
         init() {
             if (!this.content.zoomEffect) return;
@@ -236,11 +240,6 @@ export default {
                 background: this.content.zoomBackgroundColor,
             });
         },
-    },
-    mounted() {
-        if (this.content.zoomEffect) {
-            this.init();
-        }
     },
 };
 </script>
