@@ -106,6 +106,7 @@ export default {
     wwEditorConfiguration({ content }) {
         return getSettingsConfigurations(content);
     },
+    /* wwEditor:end */
     computed: {
         isEditing() {
             /* wwEditor:start */
@@ -189,7 +190,6 @@ export default {
             };
         },
     },
-    /* wwEditor:end */
     watch: {
         'content.text'() {
             this.init();
