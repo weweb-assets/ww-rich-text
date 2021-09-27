@@ -12,7 +12,6 @@
 <script>
 import showdown from 'showdown';
 import mediumZoom from 'medium-zoom';
-import { getSettingsConfigurations } from './configuration';
 
 export default {
     props: {
@@ -20,79 +19,6 @@ export default {
         /* wwEditor:start */
         wwEditorState: { type: Object, required: true },
         /* wwEditor:end */
-    },
-    wwDefaultContent: {
-        text: {
-            en: '',
-        },
-        selectedTag: 'p',
-        h1: {
-            fontSize: wwLib.responsive('32px'),
-            fontFamily: wwLib.responsive(''),
-            fontWeight: wwLib.responsive(''),
-            textAlign: wwLib.responsive(''),
-            color: wwLib.responsive(''),
-            lineHeight: wwLib.responsive('32px'),
-            spacing: wwLib.responsive('6px'),
-        },
-        h2: {
-            fontSize: wwLib.responsive('24px'),
-            fontFamily: wwLib.responsive(''),
-            fontWeight: wwLib.responsive(''),
-            textAlign: wwLib.responsive(''),
-            color: wwLib.responsive(''),
-            lineHeight: wwLib.responsive('32px'),
-            spacing: wwLib.responsive('6px'),
-        },
-        h3: {
-            fontSize: wwLib.responsive('19px'),
-            fontFamily: wwLib.responsive(''),
-            fontWeight: wwLib.responsive(''),
-            textAlign: wwLib.responsive(''),
-            color: wwLib.responsive(''),
-            lineHeight: wwLib.responsive('32px'),
-            spacing: wwLib.responsive('6px'),
-        },
-        h4: {
-            fontSize: wwLib.responsive('16px'),
-            fontFamily: wwLib.responsive(''),
-            fontWeight: wwLib.responsive(''),
-            textAlign: wwLib.responsive(''),
-            color: wwLib.responsive(''),
-            lineHeight: wwLib.responsive('32px'),
-            spacing: wwLib.responsive('6px'),
-        },
-        p: {
-            fontSize: wwLib.responsive('16px'),
-            fontFamily: wwLib.responsive(''),
-            fontWeight: wwLib.responsive(''),
-            textAlign: wwLib.responsive(''),
-            color: wwLib.responsive(''),
-            lineHeight: wwLib.responsive('25px'),
-            spacing: wwLib.responsive('6px'),
-        },
-        a: {
-            fontSize: wwLib.responsive('16px'),
-            fontFamily: wwLib.responsive(''),
-            color: wwLib.responsive(''),
-            isUnderline: true,
-        },
-        blockquote: {
-            color: wwLib.responsive('rgb(153, 153, 153)'),
-            borderColor: wwLib.responsive('rgb(223, 226, 229)'),
-            spacing: wwLib.responsive('6px'),
-        },
-        img: {
-            width: wwLib.responsive('100%'),
-            spacing: wwLib.responsive('6px'),
-        },
-        iframe: {
-            width: wwLib.responsive('100%'),
-            spacing: wwLib.responsive('6px'),
-        },
-        zoomEffect: true,
-        zoomMargin: '24px',
-        zoomBackgroundColor: 'rgba(0, 0, 0, 0.6)',
     },
     data() {
         return {
@@ -102,11 +28,6 @@ export default {
             zoomInstance: null,
         };
     },
-    /* wwEditor:start */
-    wwEditorConfiguration({ content }) {
-        return getSettingsConfigurations(content);
-    },
-    /* wwEditor:end */
     computed: {
         isEditing() {
             /* wwEditor:start */
