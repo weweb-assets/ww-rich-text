@@ -486,8 +486,23 @@ export default {
                     width: {
                         type: 'Length',
                         label: {
-                            en: 'Size',
-                            fr: 'Taille',
+                            en: 'Width',
+                            fr: 'Largeur',
+                        },
+                        options: {
+                            unitChoices: [
+                                { value: '%', label: '%', min: 1, max: 100 },
+                                { value: 'px', label: 'px', min: 1 },
+                            ],
+                        },
+                        bindable: true,
+                        responsive: true,
+                    },
+                    height: {
+                        type: 'Length',
+                        label: {
+                            en: 'Height',
+                            fr: 'Hauteur',
                         },
                         options: {
                             unitChoices: [
@@ -526,6 +541,7 @@ export default {
             },
             defaultValue: {
                 width: '100%',
+                height: '400px',
                 marginTop: '6px',
                 marginBottom: '6px',
             },

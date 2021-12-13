@@ -110,6 +110,7 @@ export default {
                 '--img-margin-bottom': this.content.img.marginBottom,
                 // iframe
                 '--iframe-width': this.content.iframe.width,
+                '--iframe-height': this.content.iframe.height,
                 '--iframe-margin-top': this.content.iframe.marginTop,
                 '--iframe-margin-bottom': this.content.iframe.marginBottom,
             };
@@ -298,21 +299,24 @@ export default {
         display: flex;
         justify-content: center;
 
-        img {
-            width: var(--img-width);
-            margin: 24px auto;
-            max-width: 100vh;
-        }
+        width: var(--img-width);
+        height: auto;
+        margin: 52px auto;
+        max-width: 100vh;
+        margin-top: var(--img-margin-top);
+        margin-bottom: var(--img-margin-bottom);
     }
     img {
         width: var(--img-width);
+        height: auto;
         margin: 52px auto;
         max-width: 100vh;
         margin-top: var(--img-margin-top);
         margin-bottom: var(--img-margin-bottom);
     }
     iframe {
-        width: var(--video-width);
+        width: var(--iframe-width);
+        height: var(--iframe-height);
         margin: 24px auto;
         margin-top: var(--iframe-margin-top);
         margin-bottom: var(--iframe-margin-bottom);
