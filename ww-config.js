@@ -189,6 +189,7 @@ export default {
                 marginTop: '',
                 marginBottom: '',
             },
+            responsive: true,
         },
         h2: {
             type: 'Object',
@@ -208,6 +209,7 @@ export default {
                 marginTop: '',
                 marginBottom: '',
             },
+            responsive: true,
         },
         h3: {
             type: 'Object',
@@ -227,6 +229,7 @@ export default {
                 marginTop: '',
                 marginBottom: '',
             },
+            responsive: true,
         },
         h4: {
             type: 'Object',
@@ -246,6 +249,7 @@ export default {
                 marginTop: '',
                 marginBottom: '',
             },
+            responsive: true,
         },
         p: {
             type: 'Object',
@@ -265,6 +269,7 @@ export default {
                 marginTop: '',
                 marginBottom: '',
             },
+            responsive: true,
         },
         a: {
             type: 'Object',
