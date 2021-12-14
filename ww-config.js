@@ -397,6 +397,7 @@ export default {
             hidden: (content, sidepanelContent) => {
                 return sidepanelContent.selectedTag !== 'img';
             },
+            responsive: true,
             options: {
                 item: {
                     width: {
@@ -486,6 +487,7 @@ export default {
             hidden: (content, sidepanelContent) => {
                 return sidepanelContent.selectedTag !== 'iframe';
             },
+            responsive: true,
             options: {
                 item: {
                     width: {
