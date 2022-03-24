@@ -302,7 +302,7 @@ export default {
         width: var(--img-width);
         height: auto;
         margin: 52px auto;
-        max-width: 100vh;
+        max-width: 100%;
         margin-top: var(--img-margin-top);
         margin-bottom: var(--img-margin-bottom);
     }
@@ -310,7 +310,7 @@ export default {
         width: var(--img-width);
         height: auto;
         margin: 52px auto;
-        max-width: 100vh;
+        max-width: 100%;
         margin-top: var(--img-margin-top);
         margin-bottom: var(--img-margin-bottom);
     }
