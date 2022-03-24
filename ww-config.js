@@ -410,6 +410,7 @@ export default {
                             unitChoices: [
                                 { value: '%', label: '%', min: 1, max: 100 },
                                 { value: 'px', label: 'px', min: 1 },
+                                { value: 'auto', label: 'auto' }
                             ],
                         },
                         bindable: true,
