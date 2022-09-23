@@ -105,7 +105,6 @@ export default {
                 '--blockquote-margin-bottom': this.content.blockquote.marginBottom,
                 // images
                 '--img-width': this.content.img.width,
-                '--img-cursor': this.imgCursor,
                 '--img-margin-top': this.content.img.marginTop,
                 '--img-margin-bottom': this.content.img.marginBottom,
                 // iframe
