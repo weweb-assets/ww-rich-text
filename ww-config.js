@@ -130,7 +130,7 @@ export default {
             en: 'Rich text',
             fr: 'Rich texte',
         },
-        icon: 'text-align-left',
+        icon: 'menu-alt-2',
     },
     properties: {
         selectedTag: {
