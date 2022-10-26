@@ -48,22 +48,22 @@ const textOptions = {
                     value: 'left',
                     default: true,
                     title: { en: 'Left', fr: 'Gauche' },
-                    icon: 'text-align-left',
+                    icon: 'menu-alt-2',
                 },
                 {
                     value: 'center',
                     title: { en: 'Center', fr: 'Milieu' },
-                    icon: 'text-align-center',
+                    icon: 'text-middle',
                 },
                 {
                     value: 'right',
                     title: { en: 'Right', fr: 'Droite' },
-                    icon: 'text-align-right',
+                    icon: 'menu-alt-3',
                 },
                 {
                     value: 'justify',
                     title: { en: 'Justify', fr: 'Justifié' },
-                    icon: 'text-align-justify',
+                    icon: 'menu',
                 },
             ],
         },
@@ -130,7 +130,7 @@ export default {
             en: 'Rich text',
             fr: 'Rich texte',
         },
-        icon: 'text-align-left',
+        icon: 'menu-alt-2',
     },
     properties: {
         selectedTag: {
