@@ -94,7 +94,10 @@ const textOptions = {
         responsive: true,
         type: 'Length',
         options: {
-            unitChoices: [{ value: 'px', label: 'px', min: 0, max: 100 }],
+            unitChoices: [
+                { value: 'px', label: 'px', min: 0, max: 100 },
+                { value: 'auto', label: 'auto' },
+            ],
         },
         bindable: true,
     },
@@ -410,7 +413,7 @@ export default {
                             unitChoices: [
                                 { value: '%', label: '%', min: 1, max: 100 },
                                 { value: 'px', label: 'px', min: 1 },
-                                { value: 'auto', label: 'auto' }
+                                { value: 'auto', label: 'auto' },
                             ],
                         },
                         bindable: true,
