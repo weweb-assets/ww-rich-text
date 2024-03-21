@@ -55,6 +55,7 @@ export default {
                 'parameterTextColor',
                 'parameterBulletList',
                 'parameterOrderedList',
+                'parameterTaskList',
                 'parameterLink',
                 'parameterCodeBlock',
                 'parameterQuote',
@@ -149,6 +150,7 @@ export default {
         },
         { label: 'Toggle Bullet List', action: 'toggleBulletList' },
         { label: 'Toggle Ordered List', action: 'toggleOrderedList' },
+        { label: 'Toggle Check List', action: 'toggleTaskList' },
         { label: 'Toggle Code Block', action: 'toggleCodeBlock' },
         { label: 'Toggle Blockquote', action: 'toggleBlockquote' },
         { label: 'Undo', action: 'undo' },
@@ -1035,6 +1037,28 @@ export default {
                 ],
             },
             defaultValue: true,
+        },
+        parameterTaskList: {
+            section: 'settings',
+            hidden: content => content.customMenu,
+            label: {
+                en: 'Check list',
+            },
+            type: 'TextRadioGroup',
+            options: {
+                choices: [
+                    {
+                        value: true,
+                        label: 'Show',
+                    },
+                    {
+                        default: true,
+                        value: false,
+                        label: 'Hide',
+                    },
+                ],
+            },
+            defaultValue: false,
         },
         parameterLink: {
             section: 'settings',
