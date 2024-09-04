@@ -22,7 +22,7 @@ export default {
     },
     data() {
         return {
-            converter: new showdown.Converter({ tables: true, openLinksInNewWindow: true, emoji: true }),
+            converter: new showdown.Converter({ tables: true, openLinksInNewWindow: true, emoji: true, disableForced4SpacesIndentedSublists: true }),
             figures: [],
             isZoomed: false,
             zoomInstance: null,
