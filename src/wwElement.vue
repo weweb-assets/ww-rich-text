@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import showdown from 'showdown';
+import { marked } from 'marked';
 import mediumZoom from 'medium-zoom';
 
 export default {
@@ -22,7 +22,6 @@ export default {
     },
     data() {
         return {
-            converter: new showdown.Converter({ tables: true, openLinksInNewWindow: true, emoji: true, disableForced4SpacesIndentedSublists: true }),
             figures: [],
             isZoomed: false,
             zoomInstance: null,
@@ -37,7 +36,7 @@ export default {
             return false;
         },
         html() {
-            return this.converter.makeHtml(wwLib.wwLang.getText(this.content.text));
+            return marked.parse(wwLib.wwLang.getText(this.content.text));
         },
         hasContent() {
             const text = wwLib.wwLang.getText(this.content.text);
