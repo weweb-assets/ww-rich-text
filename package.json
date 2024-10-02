@@ -11,12 +11,11 @@
     },
     "dependencies": {
         "animejs": "^3.2.1",
+        "marked": "^14.1.2",
         "medium-zoom": "^1.0.6",
-        "prismjs": "^1.23.0",
-        "showdown": "^1.9.1"
+        "prismjs": "^1.23.0"
     },
     "devDependencies": {
-        "@types/showdown": "^1.9.3",
         "@weweb/cli": "latest"
     },
     "license": "MIT"
