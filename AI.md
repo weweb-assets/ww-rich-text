@@ -1,17 +1,14 @@
 ---
 name: ww-rich-text
-description: The ww-rich-text component renders rich text content with customizable styles for various HTML elements, supports markdown and HTML input, and offers a lightbox effect for images, ensuring versatile and visually appealing text presentation.
+description: The ww-rich-text component renders rich text content with customizable styles for various HTML elements, supports markdown and HTML input, and offers a lightbox effect for images, ensuring versatile and visually appealing text presentation. This is for rendering rich text, not to edit rich text.
 keywords:
   - rich text rendering
+  - display markdown
   - customizable styles
   - markdown support
-  - html input
   - multi-language support
-  - lightbox effect
-  - image zoom
-  - styling options
-  - iframe styling
-  - web component
+  - formatted innerHTML
+  - formatting text
 ---
 
 #### ww-rich-text
