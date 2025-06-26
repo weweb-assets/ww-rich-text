@@ -249,10 +249,9 @@ export default {
     }
     font-size: var(--p-fontSize);
     font-family: var(--p-fontFamily);
-    font-weight: var(--p-fontSize);
+    font-weight: var(--p-fontWeight);
     text-align: var(--p-textAlign);
     color: var(--p-color);
-    line-height: var(--p-lineHeight);
 
     table {
         margin: 64px 0 !important;
